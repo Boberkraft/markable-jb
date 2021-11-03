@@ -34,12 +34,6 @@ rails generate markable:migration
 rake db:migrate
 ```
 
-##Upgrade
-
-If you are upgrading from version 0.1.0 or less, run
-```
-rake markable:delete_orphan_marks
-```
 
 ## Usage
 

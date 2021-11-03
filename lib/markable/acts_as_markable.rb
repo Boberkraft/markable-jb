@@ -129,20 +129,20 @@ module Markable
         if by.present?
           Markable.can_mark_or_raise?(by, self, mark)
           Array.wrap(by).each do |marker|
-            Markable::Mark.delete_all({
+            Markable::Mark.where(({
               :markable_id => self.id,
               :markable_type => self.class.name,
               :marker_id => marker.id,
               :marker_type => marker.class.name,
               :mark => mark.to_s
-            })
+            })).delete_all
           end
         else
-          Markable::Mark.delete_all({
+          Markable::Mark.where({
             :markable_id => self.id,
             :markable_type => self.class.name,
             :mark => mark.to_s
-          })
+           }).delete_all
         end
       end
 
